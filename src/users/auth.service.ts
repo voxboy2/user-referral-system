@@ -78,7 +78,7 @@ export class AuthService {
         first_name,
       });
 
-      console.log(updatedReferralCode);
+      // console.log(updatedReferralCode);
 
       user.referral_code = updatedReferralCode;
       await this.user.save(user);
