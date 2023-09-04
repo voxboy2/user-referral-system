@@ -1,30 +1,27 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is a professional referral system that rewards users for bringing in new members. The system operates through a combination of database management, scheduled tasks, and business logic.
+
+Key components of our referral system include:
+
+- Users: Users can be identified using  their Ids, names, email addresses.
+
+- Referral Codes: A referral code is generated for each user. These codes are used to track and credit referrals. A user can share their referral code with others to sign up using the code, it's recorded as a successful referral.
+
+- Referral Count: A track record is kept for the number of successful referrals for each user. Once a user reaches a certain threshold (e.g., 5 referrals), they become eligible for rewards.
+
+- Wallets: Users have virtual wallets associated with their accounts. When they refer others, they earn bonuses, which are credited to their wallets. These wallets store the user's bonus balance.
+
+- Cron Jobs: A cron job is used to automate the referral system's operations. The cron jobs periodically check for qualified users and process rewards.
+
+- Here's how the system works:
+
+- The findQualifiedUsers cron job identifies users who have reached the referral threshold (e.g., 5 referrals) and marks their referrals as 'processing.' This prevents double rewards for the same referral.
+
+- The payQualifiedUsers cron job checks for referrals that are marked as 'processing' and verifies if the referred user has the required number of referrals. If they do, it credits the user's wallet with a predefined bonus amount. It also updates the referral status to 'paid' and stops further processing.
+
+The technology stack  used include NestJS, TypeORM, and Mysql for efficient management of user data, referrals, and wallets. I also used scheduled tasks provided by the NestJS Schedule library to automate the process.
+
 
 ## Installation
 
@@ -58,17 +55,9 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Efe Stephen Ebieroma](https://www.linkedin.com/in/efe-ebieroma-800512150/)
 
-## License
-
-Nest is [MIT licensed](LICENSE).
 # user-referral-system
