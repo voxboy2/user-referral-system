@@ -1,4 +1,4 @@
-## Description
+## Proffesional referral system
 
 This is a professional referral system that rewards users for bringing in new members. The system operates through a combination of database management, scheduled tasks, and business logic.
 
@@ -14,7 +14,7 @@ Key components of our referral system include:
 
 - Cron Jobs: A cron job is used to automate the referral system's operations. The cron jobs periodically check for qualified users and process rewards.
 
-- Here's how the system works:
+### Here's how the system works:
 
 - The findQualifiedUsers cron job identifies users who have reached the referral threshold (e.g., 5 referrals) and marks their referrals as 'processing.' This prevents double rewards for the same referral.
 
@@ -59,5 +59,3 @@ $ npm run test:cov
 ## Stay in touch
 
 - Author - [Efe Stephen Ebieroma](https://www.linkedin.com/in/efe-ebieroma-800512150/)
-
-# user-referral-system
