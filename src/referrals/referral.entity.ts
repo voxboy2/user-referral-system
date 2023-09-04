@@ -8,7 +8,7 @@ export class Referral {
 
   @ManyToOne(() => User, user => user.referrals)
   @JoinColumn({ name: 'referred_by' })
-  referred_by: User | null
+  referred_by: User
 
   @Column({ nullable: true })
   user_id: number;

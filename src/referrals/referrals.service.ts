@@ -2,9 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from '../users/user.entity';
 import { Referral } from './referral.entity';
 import { Repository } from 'typeorm';
-import { InjectRepository,  } from '@nestjs/typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 import { FindOptionsWhere } from 'typeorm';
-
 
 @Injectable()
 export class ReferralsService {
@@ -62,24 +61,18 @@ export class ReferralsService {
   }
 
   async incrementReferrer(user_id: number) {
-    const referredBy = await this.referral.findOne({
-      where: { referred_by : user_id as FindOptionsWhere<Referral>}
+    const referredBy = await this.user.findOne({
+      where: { id: user_id},
     });
-
 
     if (!referredBy) {
       return false;
     }
 
-    const referrer = await this.user.findOne({
-      where: { id: referredBy?.id },
-    });
+    referredBy.referral_count += 1;
+    await this.user.save(referredBy);
 
-    referrer.referral_count += 1;
-    await this.user.save(referrer);
-
-    if (!referrer) throw Error('Unable to increment referral count');
+    if (!referredBy) throw Error('Unable to increment referral count');
     return true;
   }
-
 }
